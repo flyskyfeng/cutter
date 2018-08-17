@@ -329,7 +329,8 @@ HEADERS  += \
     common/QtResImporter.h \
     common/CutterSeekable.h \
     common/RefreshDeferrer.h \
-    dialogs/WelcomeDialog.h
+    dialogs/WelcomeDialog.h \
+    common/Json.h
 
 FORMS    += \
     dialogs/AboutDialog.ui \
