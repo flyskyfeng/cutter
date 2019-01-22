@@ -10,7 +10,7 @@ EditMethodDialog::EditMethodDialog(QWidget *parent) :
 
     ui->classComboBox->clear();
     for (auto &cls : Core()->getAllClassesFromAnal()) {
-        ui->classComboBox->addItem(cls.name, QVariant::fromValue<ClassDescription>(cls));
+        ui->classComboBox->addItem(cls.name, QVariant::fromValue<BinClassDescription>(cls));
     }
 
     updateVirtualUI();
@@ -64,7 +64,7 @@ void EditMethodDialog::setClass(const QString &className)
     }
 
     for (int i=0; i<ui->classComboBox->count(); i++) {
-        ClassDescription cls = ui->classComboBox->itemData(i).value<ClassDescription>();
+        BinClassDescription cls = ui->classComboBox->itemData(i).value<BinClassDescription>();
         if (cls.name == className) {
             ui->classComboBox->setCurrentIndex(i);
             break;
@@ -97,7 +97,7 @@ QString EditMethodDialog::getClass()
     if (index < 0) {
         return nullptr;
     }
-    return ui->classComboBox->itemData(index).value<ClassDescription>().name;
+    return ui->classComboBox->itemData(index).value<BinClassDescription>().name;
 }
 
 ClassMethodDescription EditMethodDialog::getMethod()

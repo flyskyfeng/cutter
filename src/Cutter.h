@@ -258,7 +258,7 @@ struct ClassBaseClassDescription {
 struct ClassMethodDescription {
     QString name;
     RVA addr = RVA_INVALID;
-    int vtableIndex = -1;
+    st64 vtableOffset = -1;
 };
 
 struct ClassFieldDescription {
@@ -266,7 +266,7 @@ struct ClassFieldDescription {
     RVA addr = RVA_INVALID;
 };
 
-struct ClassDescription {
+struct BinClassDescription {
     QString name;
     RVA addr = RVA_INVALID;
     RVA vtableAddr = RVA_INVALID;
@@ -364,8 +364,8 @@ Q_DECLARE_METATYPE(RCorePluginDescription)
 Q_DECLARE_METATYPE(RAsmPluginDescription)
 Q_DECLARE_METATYPE(ClassMethodDescription)
 Q_DECLARE_METATYPE(ClassFieldDescription)
-Q_DECLARE_METATYPE(ClassDescription)
-Q_DECLARE_METATYPE(const ClassDescription *)
+Q_DECLARE_METATYPE(BinClassDescription)
+Q_DECLARE_METATYPE(const BinClassDescription *)
 Q_DECLARE_METATYPE(const ClassMethodDescription *)
 Q_DECLARE_METATYPE(const ClassFieldDescription *)
 Q_DECLARE_METATYPE(ResourcesDescription)
@@ -614,9 +614,9 @@ public:
     QList<SectionDescription> getAllSections();
     QList<SegmentDescription> getAllSegments();
     QList<EntrypointDescription> getAllEntrypoint();
-    QList<ClassDescription> getAllClassesFromBin();
-    QList<ClassDescription> getAllClassesFromFlags();
-    QList<ClassDescription> getAllClassesFromAnal();
+    QList<BinClassDescription> getAllClassesFromBin();
+    QList<BinClassDescription> getAllClassesFromFlags();
+    QList<BinClassDescription> getAllClassesFromAnal();
     QList<ResourcesDescription> getAllResources();
     QList<VTableDescription> getAllVTables();
     QList<TypeDescription> getAllTypes();
